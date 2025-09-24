@@ -1,12 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { ProductoProvider } from './Providers/ProductoProvider';
+import { NavigationContainer } from '@react-navigation/native';
+import AppNavigator from './navigation/AppNavigation';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ProductoProvider>
+      <NavigationContainer>
+        <AppNavigator></AppNavigator>
+      </NavigationContainer>
+    </ProductoProvider>
   );
 }
 

@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { View, Text, FlatList, StyleSheet, Button, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useProductos } from '../Providers/ProductoProvider'
-import ProductoCard from '../components/ProductoCard';
+import ProductoCard from '../Componentes/ProductoCard'
+import { Producto } from '../Modelos/Producto';
 
 export default function ListaProductosScreen(){
     const { productos, cargarProductos, eliminarProducto} =useProductos();
@@ -15,30 +16,16 @@ export default function ListaProductosScreen(){
         return unsubscribe
     },[navigation])
 
-    const handleEliminar = (id:number) =>{
-        Alert.alert(
-            'Confirmar Eliminacion',
-            'Estas seguro de que quieres eliminar este producto?',
-            [
-                { text: 'Cancelar', style: 'cancel' },
-                { text: 'Eliminar', onPress: () => eliminarProducto(id) },
-            ],
-            { cancelable: false }
-        );
-    };
-    const renderItem = ({ item }: { item: Producto }) => (
+   const renderItem =({ item }: { item: Producto }) =>(
         <ProductoCard
-            producto={item}
-            onView={() => navigation.navigate('DetalleProducto', { productoId: item.id })}
-            onDelete={() => handleEliminar(item.id)}
-        />
+            producto={item}/>
     );
 
     return (
         <View style={styles.container}>
             <Button
                 title="Ir al Formulario"
-                onPress={() => navigation.navigate('FormularioProducto')}
+                onPress={() =>navigation.navigate('FormularioProducto')}
             />
             {productos.length === 0 ? (
                 <Text style={styles.mensaje}>No hay productos para mostrar</Text>

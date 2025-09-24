@@ -1,11 +1,10 @@
 const express = require('express');
-const router = express.Router()
-const { Producto } = require('./Modelos/Productos')
+const  Producto  = require('./Modelos/Productos')
 const app = express()
 
 app.use(express.json());
 
-router.get('/productos', async (req, res) => {
+app.get('/productos', async (req, res) => {
     try {
         const productos = await Producto.findAll()
         res.status(200).json(productos);
@@ -15,7 +14,7 @@ router.get('/productos', async (req, res) => {
     }
 });
 
-router.post('/productos', async (req, res)=>{
+app.post('/productos', async (req, res)=>{
     try {
         const { nombre, descripcion, precio, estado, categoria, url_fotografia } = req.body
 
@@ -39,7 +38,7 @@ router.post('/productos', async (req, res)=>{
     }
 });
 
-router.delete('/items/:id', async (req, res)=>{
+app.delete('/items/:id', async (req, res)=>{
     const { id } = req.params;
     try {
         const productoEliminado = await Producto.destroy({
