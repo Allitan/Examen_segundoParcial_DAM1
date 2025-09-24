@@ -6,17 +6,17 @@ import * as ImagePicker from 'expo-image-picker'
 import { Producto } from '../Modelos/Producto'
 
 export default function FormularioProductoScreen(){
-    const { agregarProducto } = useProductos()
-    const navigation = useNavigation()
+    const { agregarProducto } =useProductos()
+    const navigation =useNavigation()
 
-    const [nombre, setNombre] = useState('')
-    const [descripcion, setDescripcion] = useState('');
-    const [precio, setPrecio] = useState('');
-    const [estado, setEstado] = useState('Disponible');
+    const [nombre, setNombre] =useState('')
+    const [descripcion, setDescripcion] = useState('')
+    const [precio, setPrecio] =useState('')
+    const [estado, setEstado] =useState('Disponible');
     const [categoria, setCategoria] = useState('');
-    const [url_fotografia, setUrlFotografia] = useState<string | null>(null)
+    const [url_fotografia,setUrlFotografia] = useState<string | null>(null)
 
-    const seleccionarImagen = async ()=>{
+    const seleccionarImagen = async()=>{
         let result =await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.Images,
             allowsEditing: true,

@@ -7,8 +7,7 @@ import { Producto } from '../Modelos/Producto'
 interface ProductoCardProps{
     producto: Producto
 }
-
-export default function ProductoCard({producto}: ProductoCardProps){
+export default function ProductoCard({producto}:ProductoCardProps){
     const navigation = useNavigation()
     const { eliminarProducto } =useProductos()
 

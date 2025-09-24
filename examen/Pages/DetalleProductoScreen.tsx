@@ -9,12 +9,11 @@ export default function DetalleProductoScreen(){
     const navigation = useNavigation()
     const route = useRoute()
 
-    //@ts-ignore
     const { productoId }=route.params
 
     const producto = productos.find(p => p.id ===productoId);
 
-    const handleEliminar =() =>{
+    const handleEliminar =()=>{
         if (producto) {
             Alert.alert(
                 'Confirmar Eliminacion',

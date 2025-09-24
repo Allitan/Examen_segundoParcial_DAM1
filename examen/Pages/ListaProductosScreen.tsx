@@ -24,7 +24,7 @@ export default function ListaProductosScreen(){
     return (
         <View style={styles.container}>
             <Button
-                title="Ir al Formulario"
+                title="Agregar Produto"
                 onPress={() =>navigation.navigate('FormularioProducto')}
             />
             {productos.length === 0 ? (
